@@ -1,4 +1,5 @@
 $(document).ready(main);
+$(document).ready(Consultar);
 
 var objDepartamentos = [
     { "ID": "0", "NAME": "NIVEL NACIONAL" },
@@ -63,14 +64,24 @@ var mun12 = [{ "ID": "9", "NAME": "TAJUMULCO" }, { "ID": "27", "NAME": "ESQUIPUL
 var mun14 = [{ "ID": "8", "NAME": "SAN ANTONIO ILOTENANGO" }]
 var mun19 = [{ "ID": "11", "NAME": "SAN JORGE" }]
 
+function time() {
+    var d = new Date();
+    var time = `<h5>${d.getDate()}/${d.getMonth()}/${d.getUTCMonth()}</h5>` 
+
+    $('#tiempo').html(time)
+}
 function main() {
+
+    time()
     op1()
     op12()
-    nameDepto()
-    nad()
+    evaluar()
+    change()
 
     function op1() {
         var eleccion = $('select[id=TIPOELECCION]').val()
+        var depto = $('select[id=DEP]').val()
+        depto = parseInt(depto)
         alert(eleccion)
 
         let template = '';
@@ -86,11 +97,6 @@ function main() {
         $('#DEP').html(template)
     }
 
-    function nad(params) {
-        var op = $('select[id=TIPOELECCION]').change().val()
-        console.log(op);
-        
-    }
 
     function op12() {
         $('select[id=TIPOELECCION]').change(function () {
@@ -119,282 +125,318 @@ function main() {
 
             $('#DEP').html(template)
         })
+
+        var eleccion = $('select[id=TIPOELECCION]').val()
+        eleccion = parseInt(eleccion)
+        if (eleccion == 1) {
+            var tmpla = ``
+            let p = JSON.stringify(NACIONAL)
+            p = JSON.parse(p)
+
+            p.forEach(dep => {
+                tmpla += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+            });
+            $('#MUN').html(tmpla);
+        }
+
     }
 
-    function nameDepto() {
+    function evaluar() {
+        var depto = $('select[id=DEP]').val()
+        alert(depto)
+        var Idd = $('select[id=TIPOELECCION]').val()
+
+        let template = '';
+        let dept;
+
+        var DEP = parseInt(depto)
+        let municipios;
+        console.log(DEP)
+
+        var tipoeleccion = parseInt(Idd)
+
+        let parseado;
+        let response;
+
+        switch (DEP) {
+            case 0:
+                dept = JSON.stringify(NACIONAL)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+            case 1:
+                dept = JSON.stringify(GUATEMALA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 2:
+                dept = JSON.stringify(SACATEPEQUEZ)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 3:
+                dept = JSON.stringify(CHIMALTENANGO)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    console.log(template);
+
+                });
+                break;
+
+            case 4:
+                dept = JSON.stringify(ELPROGRESO)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 5:
+                if (tipoeleccion == 1) {
+                    dept = JSON.stringify(ESCUINTLA)
+                    municipios = JSON.parse(dept)
+
+                    municipios.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                } else {
+                    parseado = JSON.stringify(mun5)
+                    response = JSON.parse(parseado)
+
+                    response.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                }
+                break;
+
+            case 6:
+                dept = JSON.stringify(SANTAROSA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 7:
+                dept = JSON.stringify(SOLOLA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 8:
+                dept = JSON.stringify(TOTONICAPAN)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 9:
+                dept = JSON.stringify(QUETZALTENANGO)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 10:
+                dept = JSON.stringify(SUCHITEPEQUEZ)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 11:
+                dept = JSON.stringify(RETALHULEU)
+                municipios = JSON.parse(dept)
+
+                par.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 12:
+                if (tipoeleccion == 1) {
+                    dept = JSON.stringify(SANMARCOS)
+                    municipios = JSON.parse(dept)
+
+                    municipios.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                } else {
+                    parseado = JSON.stringify(mun12)
+                    response = JSON.parse(parseado)
+
+                    response.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                }
+
+                break;
+            case 13:
+                dept = JSON.stringify(HUEHUETENANGO)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+            case 14:
+                if (tipoeleccion == 1) {
+                    dept = JSON.stringify(QUICHE)
+                    municipios = JSON.parse(dept)
+
+                    municipios.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                } else {
+                    parseado = JSON.stringify(mun14)
+                    response = JSON.parse(parseado)
+
+                    response.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                }
+                break;
+
+            case 15:
+                dept = JSON.stringify(BAJAVERAPAZ)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 16:
+                dept = JSON.stringify(ALTAVERAPAZ)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 17:
+                dept = JSON.stringify(PETEN)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 18:
+                dept = JSON.stringify(IZABAL)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 19:
+                if (tipoeleccion == 1) {
+                    dept = JSON.stringify(ZACAPA)
+                    municipios = JSON.parse(dept)
+
+                    municipios.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                } else {
+                    parseado = JSON.stringify(mun19)
+                    response = JSON.parse(parseado)
+
+                    response.forEach(dep => {
+                        template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                    });
+                }
+
+                break;
+
+            case 20:
+                dept = JSON.stringify(CHIQUIMULA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 21:
+                dept = JSON.stringify(JALAPA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 22:
+                dept = JSON.stringify(JUTIAPA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+
+            case 23:
+                dept = JSON.stringify(USA)
+                municipios = JSON.parse(dept)
+
+                municipios.forEach(dep => {
+                    template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
+                });
+                break;
+        }
+        $('#MUN').html(template)
+    }
+
+    function change() {
         $('select[id=DEP]').change(function () {
-            var depto = $('select[id=DEP]').val()
-            var tipoeleccion = $('select[id=TIPOELECCION]').val()
-
-            let template = '';
-            let dept;
-
-            var DEP = parseInt(depto)
-            let municipios;
-            console.log(DEP)
-
-            var Idd = parseInt(tipoeleccion)
-
-            let parseado;
-            let response;
-            if (Idd == 2 && DEP == 5 || Idd == 2 && DEP == 12 || Idd == 2 && DEP == 14 || Idd == 2 && DEP == 19) {
-                switch (Idd) {
-                    case 5:
-                        parseado = JSON.stringify(mun5)
-                        response = JSON.parse(parseado)
-
-                        response.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                    case 12:
-                        parseado = JSON.stringify(mun12)
-                        response = JSON.parse(parseado)
-
-                        response.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                    case 14:
-                        parseado = JSON.stringify(mun14)
-                        response = JSON.parse(parseado)
-
-                        response.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                    case 19:
-                        parseado = JSON.stringify(mun19)
-                        response = JSON.parse(parseado)
-
-                        response.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    default:
-                        break;
-                }
-            } else {
-                switch (DEP) {
-                    case 0:
-                        dept = JSON.stringify(NACIONAL)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                    case 1:
-                        dept = JSON.stringify(GUATEMALA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 2:
-                        dept = JSON.stringify(SACATEPEQUEZ)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 3:
-                        dept = JSON.stringify(CHIMALTENANGO)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                            console.log(template);
-
-                        });
-                        break;
-
-                    case 4:
-                        dept = JSON.stringify(ELPROGRESO)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 5:
-                        dept = JSON.stringify(ESCUINTLA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-
-                        break;
-
-                    case 6:
-                        dept = JSON.stringify(SANTAROSA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 7:
-                        dept = JSON.stringify(SOLOLA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 8:
-                        dept = JSON.stringify(TOTONICAPAN)
-                        par = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 9:
-                        dept = JSON.stringify(QUETZALTENANGO)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 10:
-                        dept = JSON.stringify(SUCHITEPEQUEZ)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 11:
-                        dept = JSON.stringify(RETALHULEU)
-                        municipios = JSON.parse(dept)
-
-                        par.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 12:
-                        dept = JSON.stringify(SANMARCOS)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                    case 13:
-                        dept = JSON.stringify(HUEHUETENANGO)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                    case 14:
-                        dept = JSON.stringify(QUICHE)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 15:
-                        dept = JSON.stringify(BAJAVERAPAZ)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 16:
-                        dept = JSON.stringify(ALTAVERAPAZ)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 17:
-                        dept = JSON.stringify(PETEN)
-                        municipios = JSON.parse(dept)
-
-                        par.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 18:
-                        dept = JSON.stringify(IZABAL)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 19:
-                        dept = JSON.stringify(ZACAPA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 20:
-                        dept = JSON.stringify(CHIQUIMULA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 21:
-                        dept = JSON.stringify(JALAPA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 22:
-                        dept = JSON.stringify(JUTIAPA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-
-                    case 23:
-                        dept = JSON.stringify(USA)
-                        municipios = JSON.parse(dept)
-
-                        municipios.forEach(dep => {
-                            template += `<option class="success"value="${dep.ID}">${dep.NAME}</option>`
-                        });
-                        break;
-                }
-            }
-            $('#MUN').html(template)
+            evaluar()
         })
     }
+}
+
+
+function Consultar() {
+
+    var _TIPOELECCION = $("#TIPOELECCION").val();
+    var _DEP = $("#DEP").val();
+    var _MUN = $("#MUN").val();
+
+    $.post("https://ws2v.tse.org.gt/api/tse/resultados", {
+        PROCESO: "201902",
+        TIPOELECCION: _TIPOELECCION,
+        DEP: _DEP,
+        MUN: _MUN
+    },
+        function (data, status) {
+            console.log(data);
+        }
+    );
 }
