@@ -62,7 +62,7 @@ function Consultar() {
 
                 var _DEP = $("#DEP").val();
                 //para imagen 
-                var imagen = `<img src="/public/img/${_DEP}.png" width="250 height="400"></img>`
+                var imagen = `<img src="./public/img/${_DEP}.png" width="250 height="400"></img>`
                 $('#IMGD').html(imagen)
 
                 //para grafica 1
