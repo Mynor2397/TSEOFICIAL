@@ -49,7 +49,7 @@ function Consultar() {
                 $('#PCNTIMPUGNA').html(element.PCNTIMPUGNA.toFixed(2) + '%')
 
                 //NOMBRE DE LA TARJETA
-                $('#CARDDEP').html(element.DEP)
+                $('#CARDDEP').html(element.DEP+': '+element.MUN)
                 $('#PTOTAL').html(element.PMESASPRO.toFixed(2) + '%')
                 
 
