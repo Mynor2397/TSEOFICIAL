@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TSE 2019</title>
+    <link rel="icon" type="image/png" href="/public/img/favicon.ico">
     <link rel="stylesheet" href="/public/css/bootstrap.min (3).css">
     <link rel="stylesheet" href="/public/css/min.css">
     <link rel="stylesheet" href="/public/fonts/css/anychart-font.css">
@@ -21,9 +22,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href=""><span class="ac ac-bookmark"></span>Inicio</a></li>
-                    <li><a href=""><span class="ac ac-bookmark"></span>Inicio</a></li>
-                    <li><a href=""><span class="ac ac-bookmark"></span>Inicio</a></li>
+                    <li><a href=""><span class="ac ac-anychart2"></span>Panel de resultados</a></li>
+                    <li><a href="https://preliminares2019.tse.org.gt/201902/mesa.html"><span class="ac ac-file-image-o"></span>Imágenes de actas No. 4 por mesa</a></li>
                 </ul>
             </nav>
         </div>
@@ -92,20 +92,16 @@
             <div class="row align-items-center">
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 p-4">
                     <div class="card border-primary mb-3 " style="max-width: 40rem; height: 375px;">
-                        <div class="card-header text-center font_blue">NIVEL NACIONAL</div>
+                        <div class="card-header text-center font_blue" id="CARDDEP"></div>
                         <div class="card-body">
-                            <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
+                            <div id="IMGD" class="form-control text-center"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 p-4">
                     <div class="card border-primary mb-3 " style="max-width: 40rem; height: 350px;">
                         <div class="card-header text-center font_blue">VOTOS VÁLIDOS POR ORGANIZACIÓN POLÍTICA</div>
-                        <div class="card-body" style="max-width: 40rem; height: 250px">
+                        <div class="card-body " style="max-width: 40rem; height: 250px">
                             <canvas style="max-width: 40rem; height: 250px;" id="myChart"></canvas>
                         </div>
                     </div>
@@ -192,7 +188,7 @@
                     <div class="card border-primary mb-3 " style="max-width: 40rem; height: 500px;">
                         <div class="card-header text-center font_blue">MESAS PROCESADAS</div>
                         <div class="card-body">
-                            <h4 class="card-text text-center">1997</h4>
+                            <h4 class="card-text text-center" id="PTOTAL"></h4>
 
                             <div class="container">
                                 <div class="card border-primary mb-3 " style="max-width: 35rem; height: 200px;">

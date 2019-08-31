@@ -30,7 +30,7 @@ function Consultar() {
             console.log(datos);
 
             datos.forEach(element => {
-                $('#tiempo').html(element.FECHAHORA)
+                $('#tiempo').html('Fecha y hora de su consulta: '+element.FECHAHORA)
                 $('#VAMOS').html(element.V1)
                 $('#VAMOSP').html(element.P1.toFixed(2) + '%')
                 $('#UNE').html(element.V2)
@@ -48,12 +48,22 @@ function Consultar() {
                 $('#PINVALIDOS').html(element.PINVALIDOS.toFixed(2) + '%')
                 $('#PCNTIMPUGNA').html(element.PCNTIMPUGNA.toFixed(2) + '%')
 
+                //NOMBRE DE LA TARJETA
+                $('#CARDDEP').html(element.DEP)
+                $('#PTOTAL').html(element.PMESASPRO.toFixed(2) + '%')
+                
+
                 //segundo form
                 $('#CNTMESAS').html(element.CNTMESAS)
                 $('#MESASPRO').html(element.MESASPRO + '(' + (element.PMESASPRO.toFixed(2)) + '%)')
                 $('#MESASFALT').html(element.MESASFALT + '(' + (element.PMESASFALT.toFixed(2)) + '%)')
                 $('#CNTVOTANTES').html(element.CNTVOTANTES)
                 $('#ABSTENCIONISMO').html(element.ABSTENCIONISMO)
+
+                var _DEP = $("#DEP").val();
+                //para imagen 
+                var imagen = `<img src="/public/img/${_DEP}.png" width="250 height="400"></img>`
+                $('#IMGD').html(imagen)
 
                 //para grafica 1
                 VAMOS = element.V1;
