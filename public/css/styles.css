@@ -62,7 +62,7 @@ select option{
 @media screen and (max-width:800px){
     
     header nav{
-        width: 30%;
+        width: 80%;
         height: 100%;
         margin: 0;
         position: absolute;
