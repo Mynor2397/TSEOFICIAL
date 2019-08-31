@@ -1,12 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
 header{
     width:100%; /* Establecemos que el header abarque el 100% del documento */
 	overflow:hidden; /* Eliminamos errores de float */
-	background:#0d6dda;
+	background:#064388;
 	margin-bottom:20px;
 }
 
@@ -14,13 +9,13 @@ header nav{
     width: 90%;
     max-width: 1000px;
     margin: 20px auto;
-    background: #0d6dda;  
+    background: #064388;  
 }
 .menu_bar{
    width: 90%;
    max-width: 1000px; 
    margin: 20px auto;
-   background: #0d6dda;
+   background: #064388;
 }
 .menu_bar{
     display: none;
@@ -42,16 +37,27 @@ header nav ul li a{
 }
 header nav ul li span{
     margin-right: 10px;
+    font-size: 40px;
+
 }
 header nav ul li a:hover{
-    background: #2578d6;
-    font-size: 18px;
+    background: #1657a1;
+    font-size: 20px;
     width: 70%;
 
 }
 
 section{
     padding: 20px;
+}
+
+.font_blue{
+    background-color: #65bae2;
+}
+
+select option{
+    background-color: #95bbe5 transparent;
+    border: #000000;
 }
 @media screen and (max-width:800px){
     
@@ -80,7 +86,7 @@ section{
     .menu_bar .bt-menu{
         display: block;
         padding: 20px;
-        background-color: #0d6dda;
+        background-color: #064388;
         color: #fff;
         text-decoration: none;
         font-weight: bold; 
